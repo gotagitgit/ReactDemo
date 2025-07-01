@@ -1,30 +1,36 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { IClassCounterState } from './IClassCounterState';
 
 function HookCounter() 
 {
-    const [count, setCount] = useState<number>(0);
-    const [name, setName] = useState<string>('');
+    const [state, setState] = useState<IClassCounterState>(
+        {
+            count: 0,
+            name: ''
+        }
+    );
 
-    const increment = () => setCount(count + 1);
-    const decrement = () => setCount(count - 1);
-    const reset = () => setCount(0);
+    const increment = () => setState(prev => ({...prev, count: prev.count + 1}));
+    const decrement = () => setState(prev => ({...prev, count: prev.count - 1}));
+    const reset = () => setState(prev => ({...prev, count: 0}));
 
     useEffect(() => {
-        document.title = `Count: ${count}`;
-    }, [count]);
+        document.title = `Count: ${state.count}`;
+    }, [state]);
 
-    const handleNameChange = (e: ChangeEvent<HTMLInputElement>): void => setName(e.target.value);  
+    const handleNameChange = (e: ChangeEvent<HTMLInputElement>): void => 
+        setState(prev => ({...prev, name: e.target.value}));
 
     return (
         <div className="counter">
-        <p>Hello {name || 'Anonymous'}!</p>
+        <p>Hello {state.name || 'Anonymous'}!</p>
         <input 
             type="text" 
             placeholder="Enter your name"
-            value={name}
+            value={state.name}
             onChange={handleNameChange}
         />
-        <h3>Count: {count}</h3>
+        <h3>Count: {state.count}</h3>
         <div className="buttons">
             <button onClick={decrement}>-</button>
             <button onClick={reset}>Reset</button>

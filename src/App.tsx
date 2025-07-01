@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import ClassCounter from './counter/ClassCounter';
+import CounterDemo from './counter/CounterDemo';
 
 function App() {
   return (
-    <ClassCounter />
+    <CounterDemo />
   );
 }
 

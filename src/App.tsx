@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
+import ClassCounter from './counter/ClassCounter';
 
 function App() {
   return (
-    <div>React Demo 1</div>
+    <ClassCounter />
   );
 }
 

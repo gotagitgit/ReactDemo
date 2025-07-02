@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface InputContainerProps {
   onAddTodo: (text: string) => void;
@@ -6,6 +6,17 @@ interface InputContainerProps {
 
 function InputContainer({ onAddTodo }: InputContainerProps)
 {
+  const [inputValue, setInputValue] = useState<string>('')
+
+  const handleAdd = () =>
+  {
+    if (inputValue.trim())
+    {
+      onAddTodo(inputValue);
+      setInputValue('');
+    }
+  }
+
   return (
     <div className="prop-pass">
       <span className="prop-label">onAddTodo ↓</span>
@@ -13,8 +24,11 @@ function InputContainer({ onAddTodo }: InputContainerProps)
         <input
           type="text"
           placeholder="Add a todo..."
+          value={inputValue}
+          onChange={x => setInputValue(x.target.value)}      
+          onKeyDown={x => x.key === 'Enter' && handleAdd()}
         />
-        <button>Add</button>
+        <button onClick={handleAdd}>Add</button>
       </div>
     </div>
   );

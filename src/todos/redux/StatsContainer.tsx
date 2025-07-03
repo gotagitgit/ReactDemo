@@ -1,9 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { TodoState } from './models';
 
-function StatsContainer() {
-  
-  const totalTodos: number = 0;
-  const completedTodos: number = 0;
+function StatsContainer() 
+{
+  const todos = useSelector((state: TodoState) => state.items);
+
+  const totalTodos: number = todos.length;
+  const completedTodos: number = todos.filter(todo => todo.completed).length;;
   const pendingTodos: number = totalTodos - completedTodos;
 
   return (

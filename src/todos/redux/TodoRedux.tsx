@@ -2,9 +2,12 @@ import React from 'react';
 import InputContainer from './InputContainer';
 import StatsContainer from './StatsContainer';
 import ListContainer from './ListContainer';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 function TodoRedux() {
   return (
+    <Provider store={store}>    
       <div className="todo-app">
         <div className="multi-component-demo">
           <div className="component-box redux">
@@ -23,6 +26,7 @@ function TodoRedux() {
           </div>
         </div>
       </div>
+    </Provider>
   );
 }
 

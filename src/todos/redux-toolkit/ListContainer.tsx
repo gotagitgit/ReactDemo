@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { TodoState } from './models';
 import ItemWrapper from './ItemWrapper';
+import { RootState } from './store';
+import { Todo } from './models';
 
 function ListContainer() 
 {
-  const todos = useSelector((state: TodoState) => state.items);
+  const todos: Todo[] = useSelector((state: RootState) => state.todos.items);
 
   const itemWrappers = todos.map(todo => (<ItemWrapper key={todo.id} todo={todo}/>))
 

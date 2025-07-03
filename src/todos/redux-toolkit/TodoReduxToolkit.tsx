@@ -5,7 +5,7 @@ import ListContainer from './ListContainer';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-function TodoRedux() {
+function TodoReduxToolkit() {
   return (
     <Provider store={store}>    
       <div className="todo-app">
@@ -30,4 +30,4 @@ function TodoRedux() {
   );
 }
 
-export default TodoRedux;
+export default TodoReduxToolkit;

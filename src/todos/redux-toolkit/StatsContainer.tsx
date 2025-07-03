@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { TodoState } from './models';
+import { RootState } from './store';
 
 function StatsContainer() 
 {
-  const todos = useSelector((state: TodoState) => state.items);
+  const todos = useSelector((state: RootState) => state.todos.items);
 
   const totalTodos: number = todos.length;
   const completedTodos: number = todos.filter(todo => todo.completed).length;;

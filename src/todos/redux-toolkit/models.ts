@@ -10,7 +10,7 @@ export interface TodoState
   items: Todo[];
 }
 
-// export interface RootState {
+// export interface RootState 
+// {
 //   todos: TodoState;
-//   rtkTodos: TodoState;
 // }

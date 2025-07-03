@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addToDo } from './todoSlice';
 
 function InputContainer() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -9,7 +10,7 @@ function InputContainer() {
   {
     if (inputValue.trim())
     {
-      dispatch({type: 'ADD_TODO', payload: inputValue})
+      dispatch(addToDo(inputValue))
       setInputValue('');
     }
   }
